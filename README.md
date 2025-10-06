@@ -26,33 +26,35 @@ A complete RESTful API built with Express.js that demonstrates CRUD operations, 
 ## 🛠️ Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone <your-repo-url>
    cd express-js-server-side-framework-Magwaza51
    ```
-
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```
-
 3. **Set up environment variables:**
+
    ```bash
    cp .env.example .env
    ```
-   
+
    Edit the `.env` file with your configuration:
+
    ```env
    PORT=3000
    NODE_ENV=development
    API_KEY=your-secret-api-key-here
    ```
-
 4. **Start the server:**
+
    ```bash
    # Development mode with auto-restart
    npm run dev
-   
+
    # Production mode
    npm start
    ```
@@ -60,12 +62,15 @@ A complete RESTful API built with Express.js that demonstrates CRUD operations, 
 ## 📖 API Documentation
 
 ### Base URL
+
 ```
 http://localhost:3000
 ```
 
 ### Authentication
+
 All `/api/*` routes require an API key in the request headers:
+
 ```
 x-api-key: your-secret-api-key-here
 ```
@@ -73,11 +78,13 @@ x-api-key: your-secret-api-key-here
 ### Available Endpoints
 
 #### General Routes
+
 - `GET /` - Welcome message and API overview
 - `GET /health` - Health check endpoint
 - `GET /api` - API documentation
 
 #### Product Routes
+
 - `GET /api/products` - Get all products (with filtering, pagination, search)
 - `GET /api/products/stats` - Get product statistics
 - `GET /api/products/search` - Search products
@@ -89,30 +96,35 @@ x-api-key: your-secret-api-key-here
 ## 🔍 API Usage Examples
 
 ### 1. Get All Products
+
 ```bash
 curl -H "x-api-key: demo-api-key-123" \
      "http://localhost:3000/api/products"
 ```
 
 ### 2. Get Products with Filtering and Pagination
+
 ```bash
 curl -H "x-api-key: demo-api-key-123" \
      "http://localhost:3000/api/products?category=electronics&page=1&limit=5&sortBy=price&sortOrder=desc"
 ```
 
 ### 3. Search Products
+
 ```bash
 curl -H "x-api-key: demo-api-key-123" \
      "http://localhost:3000/api/products/search?q=laptop&category=electronics"
 ```
 
 ### 4. Get Product Statistics
+
 ```bash
 curl -H "x-api-key: demo-api-key-123" \
      "http://localhost:3000/api/products/stats"
 ```
 
 ### 5. Create a New Product
+
 ```bash
 curl -X POST \
      -H "Content-Type: application/json" \
@@ -128,6 +140,7 @@ curl -X POST \
 ```
 
 ### 6. Update a Product
+
 ```bash
 curl -X PUT \
      -H "Content-Type: application/json" \
@@ -140,6 +153,7 @@ curl -X PUT \
 ```
 
 ### 7. Delete a Product
+
 ```bash
 curl -X DELETE \
      -H "x-api-key: demo-api-key-123" \
@@ -150,22 +164,22 @@ curl -X DELETE \
 
 ### GET /api/products
 
-| Parameter | Type | Description | Default |
-|-----------|------|-------------|---------|
-| `search` | string | Search in product name/description | - |
-| `category` | string | Filter by category | - |
-| `inStock` | boolean | Filter by stock status | - |
-| `page` | number | Page number for pagination | 1 |
-| `limit` | number | Items per page | 10 |
-| `sortBy` | string | Field to sort by | name |
-| `sortOrder` | string | Sort order (asc/desc) | asc |
+| Parameter     | Type    | Description                        | Default |
+| ------------- | ------- | ---------------------------------- | ------- |
+| `search`    | string  | Search in product name/description | -       |
+| `category`  | string  | Filter by category                 | -       |
+| `inStock`   | boolean | Filter by stock status             | -       |
+| `page`      | number  | Page number for pagination         | 1       |
+| `limit`     | number  | Items per page                     | 10      |
+| `sortBy`    | string  | Field to sort by                   | name    |
+| `sortOrder` | string  | Sort order (asc/desc)              | asc     |
 
 ### GET /api/products/search
 
-| Parameter | Type | Description | Required |
-|-----------|------|-------------|----------|
-| `q` | string | Search query | Yes |
-| `category` | string | Filter by category | No |
+| Parameter    | Type   | Description        | Required |
+| ------------ | ------ | ------------------ | -------- |
+| `q`        | string | Search query       | Yes      |
+| `category` | string | Filter by category | No       |
 
 ## 📋 Product Schema
 
@@ -185,6 +199,7 @@ curl -X DELETE \
 ## 🚦 Response Format
 
 ### Success Response
+
 ```javascript
 {
   "success": true,
@@ -194,6 +209,7 @@ curl -X DELETE \
 ```
 
 ### Error Response
+
 ```javascript
 {
   "error": "ErrorType",
@@ -203,6 +219,7 @@ curl -X DELETE \
 ```
 
 ### Paginated Response
+
 ```javascript
 {
   "success": true,
@@ -248,6 +265,7 @@ express-js-server-side-framework-Magwaza51/
 You can test the API using:
 
 ### Postman Collection
+
 Import the following endpoints into Postman:
 
 1. **GET** `http://localhost:3000/health`
@@ -257,6 +275,7 @@ Import the following endpoints into Postman:
 5. **DELETE** `http://localhost:3000/api/products/:id` (with x-api-key header)
 
 ### Example Test Data
+
 ```json
 {
   "name": "Test Product",
@@ -270,6 +289,7 @@ Import the following endpoints into Postman:
 ## 🔧 Development
 
 ### Running in Development Mode
+
 ```bash
 npm run dev
 ```
@@ -277,6 +297,7 @@ npm run dev
 This will start the server with nodemon for automatic restarting on file changes.
 
 ### Environment Variables
+
 - `PORT` - Server port (default: 3000)
 - `NODE_ENV` - Environment mode (development/production)
 - `API_KEY` - API key for authentication (default: demo-api-key-123)
@@ -294,12 +315,14 @@ For production deployment:
 ## 📝 Assignment Requirements Completed
 
 ✅ **Task 1: Express.js Setup**
+
 - ✅ Node.js project initialized with package.json
 - ✅ Express.js and dependencies installed
 - ✅ Basic server listening on port 3000
 - ✅ "Hello World" route implemented
 
 ✅ **Task 2: RESTful API Routes**
+
 - ✅ Product resource with all required fields
 - ✅ GET /api/products - List all products
 - ✅ GET /api/products/:id - Get specific product
@@ -308,18 +331,21 @@ For production deployment:
 - ✅ DELETE /api/products/:id - Delete product
 
 ✅ **Task 3: Middleware Implementation**
+
 - ✅ Custom logger middleware with timestamps
 - ✅ JSON body parser middleware
 - ✅ Authentication middleware with API key validation
 - ✅ Validation middleware for product operations
 
 ✅ **Task 4: Error Handling**
+
 - ✅ Global error handling middleware
 - ✅ Custom error classes (NotFoundError, ValidationError, etc.)
 - ✅ Proper HTTP status codes
 - ✅ Async error handling with try/catch wrapper
 
 ✅ **Task 5: Advanced Features**
+
 - ✅ Query parameters for filtering by category
 - ✅ Pagination support with page and limit
 - ✅ Search endpoint for product names
@@ -327,7 +353,7 @@ For production deployment:
 
 ## 👥 Author
 
-Student Name - Week 2 Assignment for Express.js Server-Side Framework
+M. Magwaza - Week 2 Assignment for Express.js Server-Side Framework
 
 ## 📄 License
 
@@ -344,4 +370,4 @@ Your work will be automatically submitted when you push to your GitHub Classroom
 
 - [Express.js Documentation](https://expressjs.com/)
 - [RESTful API Design Best Practices](https://restfulapi.net/)
-- [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) 
+- [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
